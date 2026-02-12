@@ -1,0 +1,163 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-botanical: var(--botanical);
+  --color-botanical-light: var(--botanical-light);
+  --color-warm: var(--warm);
+  --color-rose-soft: var(--rose-soft);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Premium Florist Color Palette */
+  --background: #FAFAF7;
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #2D2D2D;
+  --primary-foreground: #FAFAF7;
+  --secondary: #F5F0EB;
+  --secondary-foreground: #2D2D2D;
+  --muted: #F5F0EB;
+  --muted-foreground: #6B6B6B;
+  --accent: #4A6741;
+  --accent-foreground: #FFFFFF;
+  --destructive: #B91C1C;
+  --border: #E8E4DF;
+  --input: #E8E4DF;
+  --ring: #4A6741;
+
+  /* Brand Colors */
+  --botanical: #4A6741;
+  --botanical-light: #E8EFE6;
+  --warm: #C4A882;
+  --rose-soft: #D4A9A9;
+
+  /* Chart */
+  --chart-1: #4A6741;
+  --chart-2: #C4A882;
+  --chart-3: #D4A9A9;
+  --chart-4: #2D2D2D;
+  --chart-5: #8B7355;
+
+  /* Sidebar */
+  --sidebar: #FAFAF7;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-primary: #2D2D2D;
+  --sidebar-primary-foreground: #FAFAF7;
+  --sidebar-accent: #F5F0EB;
+  --sidebar-accent-foreground: #2D2D2D;
+  --sidebar-border: #E8E4DF;
+  --sidebar-ring: #4A6741;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), Georgia, serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Selection color */
+::selection {
+  background: var(--botanical-light);
+  color: var(--botanical);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--background);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom flower cursor (desktop only) */
+@media (pointer: fine) {
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext x='2' y='22' font-size='20'%3E%F0%9F%8C%B8%3C/text%3E%3C/svg%3E") 14 14, auto;
+  }
+  a, button, [role='button'], input, select, textarea, label[for] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ctext x='2' y='22' font-size='20'%3E%F0%9F%92%90%3C/text%3E%3C/svg%3E") 14 14, pointer;
+  }
+}
+
+/* Mobile bottom bar padding */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 72px;
+  }
+}

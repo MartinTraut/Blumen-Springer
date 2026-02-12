@@ -14,7 +14,7 @@ export function CTASection() {
       {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/s95596f5193805018/backgroundarea/i8b7eb05741c87502/version/1740680020/image.jpg"
+          src="https://image.jimcdn.com/cdn-cgi/image/width=1920%2Cheight=400%2Cfit=contain%2Cformat=jpg%2C/app/cms/storage/image/path/s95596f5193805018/image/if6b444043c331823/version/1745615467/image.jpg"
           alt="Floristik-Atelier"
           fill
           quality={90}

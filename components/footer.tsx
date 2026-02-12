@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock, Instagram, ShoppingBag, ExternalLink } from "lucide-react";
 
@@ -11,18 +10,9 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3">
-              <Image
-                src="https://image.jimcdn.com/app/cms/image/transf/none/path/s95596f5193805018/image/id76e4651394f74fd/version/1740680020/image.png"
-                alt="Blumen Springer Logo"
-                width={44}
-                height={44}
-                className="h-11 w-11 rounded-full object-cover"
-              />
-              <h3 className="font-serif text-2xl font-semibold">
-                Blumen Springer
-              </h3>
-            </div>
+            <h3 className="font-serif text-2xl font-semibold">
+              Blumen Springer
+            </h3>
             <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">
               Frische Blumen, Hochzeitsfloristik &amp; Bio-Obst und Gemüse
               in Talheim und der Region Heilbronn.

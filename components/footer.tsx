@@ -48,6 +48,7 @@ export function Footer() {
               {[
                 { name: "Startseite", href: "/" },
                 { name: "Leistungen", href: "/leistungen" },
+                { name: "Shop", href: "/shop" },
                 { name: "Impressionen", href: "/impressionen" },
                 { name: "Über uns", href: "/ueber-uns" },
                 { name: "Kontakt", href: "/kontakt" },

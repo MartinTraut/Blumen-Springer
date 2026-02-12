@@ -1,17 +1,13 @@
 "use client";
 
 import { Phone, ShoppingBag, MessageCircle } from "lucide-react";
-import { motion } from "framer-motion";
 
 const SHOP_URL = "https://blumen-springer.lokalerflorist.de/";
 
 export function MobileCTA() {
   return (
-    <motion.div
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      transition={{ delay: 1, duration: 0.4 }}
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-white/95 backdrop-blur-md px-3 pb-[env(safe-area-inset-bottom,8px)] pt-3 lg:hidden"
+    <div
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-white/95 backdrop-blur-md px-3 pb-[env(safe-area-inset-bottom,8px)] pt-3 lg:hidden"
     >
       <div className="flex gap-2">
         <a
@@ -38,6 +34,6 @@ export function MobileCTA() {
           Anfrage
         </a>
       </div>
-    </motion.div>
+    </div>
   );
 }

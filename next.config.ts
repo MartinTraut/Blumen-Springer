@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "image.jimcdn.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.lokalerflorist.de",
+      },
     ],
     qualities: [75, 90, 95],
     formats: ["image/avif", "image/webp"],

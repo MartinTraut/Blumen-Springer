@@ -41,14 +41,19 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+          : ""
       }`}
+      style={!scrolled ? { background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)" } : undefined}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between lg:h-20">
+        <div className="flex h-16 items-center justify-between lg:h-20" style={!scrolled ? { textShadow: "0 1px 4px rgba(0,0,0,0.7)" } : { textShadow: "none" }}>
           {/* Logo */}
           <Link href="/" className="group">
-            <span className="font-serif text-xl font-semibold tracking-tight text-primary transition-colors group-hover:text-botanical sm:text-2xl">
+            <span className={`font-serif text-xl font-semibold tracking-tight transition-colors sm:text-2xl ${
+              scrolled
+                ? "text-primary group-hover:text-botanical"
+                : "text-white drop-shadow-md group-hover:text-white/80"
+            }`}>
               Blumen Springer
             </span>
           </Link>
@@ -60,16 +65,20 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-botanical/50 ${
-                  isActive(item.href)
-                    ? "text-botanical"
-                    : "text-foreground/70 hover:text-foreground"
+                  scrolled
+                    ? isActive(item.href)
+                      ? "text-botanical"
+                      : "text-foreground/70 hover:text-foreground"
+                    : isActive(item.href)
+                      ? "text-white font-semibold drop-shadow-md"
+                      : "text-white/85 hover:text-white drop-shadow-md"
                 }`}
               >
                 {item.name}
                 {isActive(item.href) && (
                   <motion.span
                     layoutId="active-nav"
-                    className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-botanical"
+                    className={`absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full ${scrolled ? "bg-botanical" : "bg-white"}`}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -81,7 +90,11 @@ export function Header() {
           <div className="hidden items-center gap-3 lg:flex">
             <a
               href="tel:+49713315450"
-              className="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-botanical focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-botanical/50"
+              className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-botanical/50 ${
+                scrolled
+                  ? "text-foreground/70 hover:text-botanical"
+                  : "text-white/85 hover:text-white drop-shadow-md"
+              }`}
             >
               <Phone className="h-4 w-4" />
               <span className="hidden xl:inline">07133 / 15450</span>
@@ -89,7 +102,11 @@ export function Header() {
             <Button
               asChild
               size="sm"
-              className="rounded-full border border-botanical/20 bg-botanical-light px-4 text-sm font-medium text-botanical hover:bg-botanical hover:text-white transition-colors"
+              className={`rounded-full px-4 text-sm font-medium transition-colors ${
+                scrolled
+                  ? "border border-botanical/20 bg-botanical-light text-botanical hover:bg-botanical hover:text-white"
+                  : "border border-botanical bg-botanical/20 text-white hover:bg-botanical/40 backdrop-blur-sm"
+              }`}
             >
               <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
                 <ShoppingBag className="mr-1.5 h-3.5 w-3.5" />
@@ -98,7 +115,11 @@ export function Header() {
             </Button>
             <Button
               asChild
-              className="bg-botanical text-white hover:bg-botanical/90 rounded-full px-5"
+              className={`rounded-full px-5 ${
+                scrolled
+                  ? "bg-botanical text-white hover:bg-botanical/90"
+                  : "bg-white text-botanical hover:bg-white/90"
+              }`}
             >
               <Link href="/kontakt">Jetzt anfragen</Link>
             </Button>
@@ -108,7 +129,11 @@ export function Header() {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <button
-                className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-secondary lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-botanical/50"
+                className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-botanical/50 ${
+                scrolled
+                  ? "hover:bg-secondary text-foreground"
+                  : "hover:bg-white/15 text-white drop-shadow-md"
+              }`}
                 aria-label="Menü öffnen"
               >
                 <Menu className="h-5 w-5" />

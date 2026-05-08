@@ -33,8 +33,8 @@ export function CTASection() {
           className="text-center"
         >
           <h2 className="font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-            Lassen Sie uns Ihre Ideen
-            <br />
+            Lassen Sie uns Ihre Ideen{" "}
+            <br className="hidden sm:inline" />
             <span className="italic">zum Blühen bringen</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">

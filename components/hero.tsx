@@ -28,7 +28,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
         </div>
 
-        <div className="relative w-full px-5 pb-28 pt-40 text-center sm:px-8">
+        <div className="relative w-full px-5 pt-32 pb-[calc(theme(spacing.28)+env(safe-area-inset-bottom,0px))] text-center sm:px-8 sm:pt-40">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}

@@ -155,9 +155,9 @@ html {
   }
 }
 
-/* Mobile bottom bar padding */
+/* Mobile bottom bar padding — accounts for sticky CTA bar + safe-area-inset (notch / home indicator) */
 @media (max-width: 1023px) {
   body {
-    padding-bottom: 72px;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
   }
 }

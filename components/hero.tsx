@@ -88,23 +88,9 @@ export function Hero() {
               </Link>
             </Button>
           </motion.div>
-        </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 1.6 }}
-            className="h-10 w-6 rounded-full border-2 border-white/30 p-1"
-          >
-            <div className="h-1.5 w-full rounded-full bg-white/60" />
-          </motion.div>
-        </motion.div>
+          <ScrollIndicator variant="light" delay={1.2} className="mt-10" />
+        </div>
       </div>
 
       {/* === DESKTOP: Split layout === */}
@@ -208,9 +194,56 @@ export function Hero() {
                 </span>
               ))}
             </motion.div>
+
+            <ScrollIndicator variant="dark" delay={1.6} className="mt-12" />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+type ScrollIndicatorProps = {
+  variant: "light" | "dark";
+  delay?: number;
+  className?: string;
+};
+
+function ScrollIndicator({ variant, delay = 1.2, className = "" }: ScrollIndicatorProps) {
+  const handleClick = () => {
+    window.scrollBy({ top: window.innerHeight * 0.92, behavior: "smooth" });
+  };
+
+  const isLight = variant === "light";
+  const labelColor = isLight
+    ? "text-white/70 group-hover:text-white"
+    : "text-botanical/60 group-hover:text-botanical";
+  const trackColor = isLight ? "bg-white/20" : "bg-botanical/15";
+  const dotColor = isLight ? "bg-white" : "bg-botanical";
+
+  return (
+    <motion.button
+      type="button"
+      onClick={handleClick}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.6 }}
+      aria-label="Nach unten scrollen"
+      className={`group inline-flex flex-col items-center gap-3 ${className}`}
+    >
+      <span
+        className={`text-[10px] font-semibold uppercase tracking-[0.4em] transition-colors duration-300 ${labelColor}`}
+      >
+        Entdecken
+      </span>
+      <div className={`relative h-10 w-px overflow-hidden ${trackColor}`}>
+        <motion.span
+          aria-hidden="true"
+          animate={{ y: ["-100%", "100%"] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+          className={`absolute inset-x-0 top-0 block h-1/2 ${dotColor}`}
+        />
+      </div>
+    </motion.button>
   );
 }
